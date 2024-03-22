@@ -44,6 +44,16 @@ services:
       - wordpress:/var/www/html
     networks:
       - wpsite
+  # sftp 
+  sftp:
+    image: atmoz/sftp
+    volumes:
+      - wordpress:/home/sftpuser/wordpress
+    ports:
+      - "2222:22"
+    command: sftpuser:Osmosis.123:1001
+    networks:
+      - wpsite
 networks:
   wpsite:
 volumes:
